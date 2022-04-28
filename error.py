@@ -5,4 +5,4 @@ class error:
         self.columna = columna
     
     def imprimir(self):
-        print(self.descripcion,str(self.line),str(self.columna))
+        print(self.descripcion,str(self.linee),str(self.columna))

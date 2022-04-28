@@ -38,12 +38,12 @@ class analizador_lexico:
             self.estado = 6
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<SIGNO MENOR QUE>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "SIGNO MENOR QUE")
         elif caracter=="-":
             self.estado = 11
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<GUION INICIO DE BANDERAS>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "GUION INICIO DE BANDERAS")
 
         elif caracter == ' ':
             self.columna += 1
@@ -60,7 +60,7 @@ class analizador_lexico:
             self.columna += 1
         else:
             if self.buffer == "RESULTADO":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<RESULTADO>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "RESULTADO")
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "VS":
@@ -68,36 +68,36 @@ class analizador_lexico:
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "TEMPORADA":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<TEMPORADA>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "TEMPORADA")
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "JORNADA":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<JORNADA>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "JORNADA")
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "GOLES":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<GOLES>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "GOLES")
                 self.estado = 0
                 self.i -=1
             elif self.buffer in ["LOCAL","VISITANTE","TOTAL"]:
-                self.agregar_token(self.buffer, self.linea, self.columna, "<CONDICION>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "CONDICION")
                 self.estado = 0
                 self.i -=1
             
             elif self.buffer == "TABLA":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<TABLA>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "TABLA")
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "PARTIDOS":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<PARTIDOS>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "PARTIDOS")
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "TOP":
-                self.agregar_token(self.buffer, self.linea, self.columna, "<TOP>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "TOP")
                 self.estado = 0
                 self.i -=1
             elif self.buffer in ["SUPERIOR","INFERIOR"]:
-                self.agregar_token(self.buffer, self.linea, self.columna, "<CONDICION>")
+                self.agregar_token(self.buffer, self.linea, self.columna, "CONDICION")
                 self.estado = 0
                 self.i -=1
             elif self.buffer == "ADIOS":
@@ -117,7 +117,7 @@ class analizador_lexico:
         else:
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<TEXTO>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "TEXTO")
             self.estado = 0
     def e3(self,caracter:str):
         if caracter.isdigit():
@@ -125,12 +125,12 @@ class analizador_lexico:
             self.buffer += caracter
             self.columna += 1
         else:
-            self.agregar_token(self.buffer, self.linea, self.columna, "<NUMERO>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "NUMERO")
             self.estado = 0
             self.i -=1
     
     def e4(self,caracter:str):
-        self.agregar_token(self.buffer, self.linea, self.columna, "<NUMERO>")
+        self.agregar_token(self.buffer, self.linea, self.columna, "NUMERO")
         self.estado = 0
         self.i -=1
     
@@ -172,30 +172,30 @@ class analizador_lexico:
             self.agregar_error("Cadena desconocida: "+self.buffer,self.linea,self.columna) 
     
     def e10(self,caracter:str):
-        self.agregar_token(self.buffer, self.linea, self.columna, "<AÑO>")
+        self.agregar_token(self.buffer, self.linea, self.columna, "AÑO")
         self.estado = 0
         if caracter == "-":
             self.estado = 6
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<GUION>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "GUION")
         elif caracter == ">":
             self.estado = 0
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<SIGNO MAYOR QUE>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "SIGNO MAYOR QUE")
 
     def e11(self,caracter:str):
         if caracter == "f":
             self.estado = 12
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<BANDERA>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "BANDERA")
         elif caracter == "n":
             self.estado = 13
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<BANDERA>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "BANDERA")
         elif caracter == "j":
             self.estado = 14
             self.buffer += caracter
@@ -217,7 +217,7 @@ class analizador_lexico:
         elif caracter == ' ':
             self.columna +=1
         else:
-            self.agregar_token(self.buffer, self.linea, self.columna, "<TEXTO>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "TEXTO")
             self.estado = 0
             self.i -=1
 
@@ -226,15 +226,17 @@ class analizador_lexico:
             self.estado = 3
             self.buffer += caracter
             self.columna += 1
+        elif caracter == ' ':
+            self.columna += 1
         else:
-            self.agregar_token(self.buffer, self.linea, self.columna, "<NUMERO>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "NUMERO")
             self.estado = 0
             self.i -=1
     def e14(self,caracter:str):
         if caracter in ["i","f"]:
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "<BANDERA>")
+            self.agregar_token(self.buffer, self.linea, self.columna, "BANDERA")
             self.estado = 0
         else:
             self.estado = 0

@@ -1,1 +1,1 @@
-"<TEXTO>"
+imprimir_errores
