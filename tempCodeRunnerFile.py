@@ -1,1 +1,1 @@
-imprimir_errores
+self.texto_html

@@ -117,7 +117,7 @@ class analizador_lexico:
         else:
             self.buffer += caracter
             self.columna += 1
-            self.agregar_token(self.buffer, self.linea, self.columna, "TEXTO")
+            self.agregar_token(self.buffer.strip(), self.linea, self.columna, "TEXTO")
             self.estado = 0
     def e3(self,caracter:str):
         if caracter.isdigit():
@@ -217,7 +217,7 @@ class analizador_lexico:
         elif caracter == ' ':
             self.columna +=1
         else:
-            self.agregar_token(self.buffer, self.linea, self.columna, "TEXTO")
+            self.agregar_token(self.buffer.strip(), self.linea, self.columna, "TEXTO")
             self.estado = 0
             self.i -=1
 
