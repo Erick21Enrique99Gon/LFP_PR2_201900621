@@ -39,7 +39,7 @@ class app:
         boton_reporte_tokens.grid(column=1,row=2)
         boton_limpiar_log_tokens = tkinter.ttk.Button(self.ventana1,text="Limpiar log de token",command=self.borrar_log_tokens)
         boton_limpiar_log_tokens.grid(column=1,row=3)
-        boton_manual_usuario = tkinter.ttk.Button(self.ventana1,text="Manual de usuario")
+        boton_manual_usuario = tkinter.ttk.Button(self.ventana1,text="Manual de usuario",command=self.abrir_manual_usuario)
         boton_manual_usuario.grid(column=1,row=4)
         boton_manual_tecnico = tkinter.ttk.Button(self.ventana1,text="Manual Tecnico",command=self.abrir_manual_tecnico)
         boton_manual_tecnico.grid(column=1,row=5)
@@ -448,6 +448,8 @@ class app:
     def abrir_manual_tecnico(self):
         webbrowser.open_new_tab("Manual Técnico PR2.pdf")
     
+    def abrir_manual_usuario(self):
+        webbrowser.open_new_tab("Manual de Usuario PR2.pdf")
     def texto_html(self,arreglo_seleccion,titulo):
         buffer = '''<table border="1">
                                     <caption>{}</caption>
